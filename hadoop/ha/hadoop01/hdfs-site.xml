@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<!--
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License. See accompanying LICENSE file.
+-->
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+	<property>
+	<!-- 为 namenode 集群定义一个 services name -->
+		<name>dfs.nameservices</name>
+		<value>ns1</value>
+	</property>
+	<property>
+	<!-- nameservice 包含哪些 namenode， 为各个 namenode 起名 -->
+		<name>dfs.ha.namenodes.ns1</name>
+		<value>nn1,nn2</value>
+	</property>
+	<property>
+	<!-- 名为 nn1 的 namenode 的 rpc 地址和端口号， rpc 用来和 datanode 通讯 -->
+		<name>dfs.namenode.rpc-address.ns1.nn1</name>
+		<value>hadoop01:8020</value>
+	</property>
+	<property>
+	<!-- 名为 nn2 的 namenode 的 rpc 地址和端口号， rpc 用来和 datanode 通讯 -->
+		<name>dfs.namenode.rpc-address.ns1.nn2</name>
+		<value>hadoop02:8020</value>
+	</property>
+	<property>
+	<!--名为 nn1 的 namenode 的 http 地址和端口号， web 客户端 -->
+		<name>dfs.namenode.http-address.ns1.nn1</name>
+		<value>hadoop01:50070</value>
+	</property>
+	<property>
+	<!--名为 nn2 的 namenode 的 http 地址和端口号， web 客户端 -->
+		<name>dfs.namenode.http-address.ns1.nn2</name>
+		<value>hadoop02:50070</value>
+	</property>
+	<property>
+	<!-- namenode 间用于共享编辑日志的 journal 节点列表 -->
+		<name>dfs.namenode.shared.edits.dir</name>
+		<value>qjournal://hadoop01:8485;hadoop02:8485;hadoop03:8485/ns1</value>
+	</property>
+	<property>
+	<!-- journalnode 上用于存放 edits 日志的目录 -->
+		<name>dfs.journalnode.edits.dir</name>
+		<value>/opt/modules/hadoopha/hadoop-2.7.5/tmp/data/dfs/jn</value>
+	</property>
+	<property>
+	<!-- 客户端连接可用状态的 NameNode 所用的代理类 -->
+		<name>dfs.client.failover.proxy.provider.ns1</name>
+		<value>org.apache.hadoop.hdfs.server.namenode.ha.ConfiguredFailoverProxyProvider</value>
+	</property>
+	<property>
+	<!-- 隔离方式 -->
+		<name>dfs.ha.fencing.methods</name>
+		<value>sshfence</value>
+	</property>
+	<property>
+	<!-- ssh 免密-->
+		<name>dfs.ha.fencing.ssh.private-key-files</name>
+		<value>/home/hadoop/.ssh/id_rsa</value>
+	</property>
+	<property>
+		<name>dfs.ha.automatic-failover.enabled</name>
+		<value>true</value>
+	</property>
+</configuration>
