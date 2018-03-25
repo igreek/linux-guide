@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration>
+	<!--zookeeper集群地址,有多个用","隔开-->
+    <property>
+        <name>hbase.zookeeper.quorum</name>
+        <value>hadoop01</value>
+    </property>
+    <!--zookeeper数据目录-->
+    <property>
+        <name>hbase.zookeeper.property.dataDir</name>
+        <value>/opt/datas/zookeeper</value>
+    </property>
+	
+	<property>
+        <name>hbase.tmp.dir</name>
+        <value>/opt/datas/hbase/tmp</value>                                          
+	</property>
+	
+    <!--开启集群分布式模式-->
+    <property>
+        <name>hbase.cluster.distributed</name>
+        <value>true</value>
+    </property>
+    <!--HBase 数据存放到 hdfs上-->
+    <property>
+        <name>hbase.rootdir</name>
+        <value>hdfs://hadoop01:8020/hbase</value>
+    </property>
+    <!-- hbase WEB UI 端口配置  -->
+    <property>
+        <name>hbase.master.info.port</name>
+        <value>60010</value>
+    </property>
+
+</configuration>

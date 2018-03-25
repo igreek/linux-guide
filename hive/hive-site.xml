@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+  <!-- WARNING!!! This file is auto generated for documentation purposes ONLY! -->
+  <!-- WARNING!!! Any changes you make to this file will be ignored by Hive.   -->
+  <!-- WARNING!!! You must make your changes in hive-site.xml instead.         -->
+  <!-- Hive Execution Parameters -->
+  
+  <property>
+    <name>hive.metastore.warehouse.dir</name>
+    <value>/user/hive/warehouse</value>
+    <description>location of default database for the warehouse</description>
+  </property>
+ 
+ <property>
+		<name>javax.jdo.option.ConnectionURL</name>
+		<value>jdbc:mysql://192.168.100.10:3306/hive?createDatabaseIfNotExist=true</value>
+		<description>JDBC connect string for a JDBC metastore</description>
+	</property>
+	<property>
+		<name>javax.jdo.option.ConnectionDriverName</name>
+		<value>com.mysql.jdbc.Driver</value>
+		<description>Driver class name for a JDBC metastore</description>
+	</property>
+	<property>
+		<name>javax.jdo.option.ConnectionUserName</name>
+		<value>root</value>
+		<description>username to use against metastore database</description>
+	</property>
+	<property>
+		<name>javax.jdo.option.ConnectionPassword</name>
+		<value>123456</value>
+		<description>password to use against metastore database</description>
+	</property>
+
+	<property>
+		<name>hive.cli.print.header</name>
+		<value>true</value>
+		<description>Whether to print the names of the columns in query output.</description>
+	</property>
+
+	<property>
+		<name>hive.cli.print.current.db</name>
+		<value>true</value>
+		<description>Whether to include the current database in the Hive prompt.</description>
+	</property>
+  
+	  <property>
+		<name>javax.jdo.option.Multithreaded</name>
+		<value>true</value>
+		<description>Set this to true if multiple threads access metastore through JDO concurrently.</description>
+	  </property>
+  
+  
+</configuration>
